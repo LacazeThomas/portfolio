@@ -1,0 +1,21 @@
+#To change
+networks:
+  web:
+    external: true
+
+version: "2"
+services:
+  portfolio:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: portfolio
+    restart: always
+    ports: 
+      - 9100:80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.frontend.rule=Host:thomaslacaze.fr" #To change
+    networks:
+      - web #To change#  

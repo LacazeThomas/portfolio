@@ -11,7 +11,7 @@ steps:
     - npm install
   when:
     branch:
-    - main
+    - master
 
 - name: push dockerhub  
   image: plugins/docker
@@ -23,7 +23,7 @@ steps:
       from_secret: docker_password
   when:
       branch:
-      - main
+      - master
 
 - name: deploy
   image: appleboy/drone-ssh
@@ -41,4 +41,4 @@ steps:
       - cd /home/thomas/mailcow-dockerized && docker-compose up -d portfolio
   when:
     branch:
-    - main
+    - master

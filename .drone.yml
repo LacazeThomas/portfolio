@@ -27,6 +27,8 @@ steps:
 
 - name: deploy
   image: appleboy/drone-ssh
+  volumes:
+    - /home/ssh/drone_rsa:/home/ssh/drone_rsa
   settings:
     host: 
       from_secret: ssh_host 
@@ -34,8 +36,6 @@ steps:
       from_secret: ssh_username
     port: 
       from_secret: ssh_port
-    volumes:
-      - /home/ssh/drone_rsa:/home/ssh/drone_rsa
     key_path: /home/ssh/drone_rsa
     script:
       - docker pull thomaslacaze/portfolio

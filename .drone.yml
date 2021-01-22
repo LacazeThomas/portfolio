@@ -9,9 +9,9 @@ steps:
   image: mhart/alpine-node
   commands:
     - npm install
-  when:
-    branch:
-    - main
+    when:
+      branch:
+      - main
 
 - name: push dockerhub  
   image: plugins/docker
@@ -22,9 +22,8 @@ steps:
     password:
       from_secret: docker_password
   when:
-    branch:
-    - main
-
+      branch:
+      - main
 
 - name: deploy
   image: appleboy/drone-ssh

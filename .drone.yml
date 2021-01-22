@@ -25,20 +25,21 @@ steps:
       branch:
       - master
 
-# - name: deploy
-#   image: appleboy/drone-ssh
-#   settings:
-#     host: 
-#        from_secret: ssh_host 
-#     username: 
-#         from_secret: ssh_username
-#     password: 
-#         from_secret: ssh_password
-#     port: 
-#         from_secret: ssh_port
-#     script:
-#       - docker pull thomaslacaze/portfolio
-#       - cd /home/thomas/mailcow-dockerized && docker-compose up -d portfolio
-#   when:
-#     branch:
-#     - master
+- name: deploy
+  image: appleboy/drone-ssh
+  settings:
+    host: 
+      from_secret: ssh_host 
+    username: 
+      from_secret: ssh_username
+    port: 
+      from_secret: ssh_port
+    volumes:
+      - /home/ssh/drone_rsa:/home/ssh/drone_rsa
+    key_path: /home/ssh/drone_rsa
+    script:
+      - docker pull thomaslacaze/portfolio
+      - cd /home/thomas/mailcow-dockerized && docker-compose up -d portfolio
+  when:
+    branch:
+    - master

@@ -29,7 +29,7 @@ steps:
   image: appleboy/drone-ssh
   volumes:
     - name: deploykey
-      path: /home/ssh/drone_rsa
+      path: /home/ssh/
   settings:
     host: 
       from_secret: ssh_host 
@@ -49,4 +49,4 @@ steps:
 volumes:
 - name: deploykey
   host:
-    path: /home/ssh/drone_rsa
+    path: /home/ssh/

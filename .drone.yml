@@ -9,9 +9,9 @@ steps:
   image: mhart/alpine-node
   commands:
     - npm install
-    when:
-      branch:
-      - main
+  when:
+    branch:
+    - main
 
 - name: push dockerhub  
   image: plugins/docker
@@ -39,6 +39,6 @@ steps:
     script:
       - docker pull thomaslacaze/portfolio
       - cd /home/thomas/mailcow-dockerized && docker-compose up -d portfolio
-    when:
-      branch:
-      - main
+  when:
+    branch:
+    - main

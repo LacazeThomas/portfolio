@@ -1,6 +1,6 @@
-FROM node:8 as react-build
+FROM node:14 as react-build
 WORKDIR /app
-COPY app/ ./
+COPY app ./
 RUN ls -la
 RUN yarn
 RUN yarn build
